@@ -1,17 +1,17 @@
 <?php
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
 
-require 'vendor/autoload.php';
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define('WP_USE_THEMES', true);
 
-function ServiceHandler() {
-    $data = new stdClass();
-    $data->Output = "Hello World!";
-
-    return json_encode($data);
-};
-
-$app = new \Slim\App;
-
-$app->get('/', 'ServiceHandler');
-$app->post('/', 'ServiceHandler');
-
-$app->run();
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp-blog-header.php' );
